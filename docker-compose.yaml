@@ -27,6 +27,7 @@ services:
       - "8080:80"
     networks:
       - frontend
+
 networks:
   backend:
   frontend:
