@@ -18,4 +18,13 @@ todoRoute.post("/", async (req, res) => {
   });
 });
 
+todoRoute.delete("/", async (req, res) => {
+  const ans = 10 / 0;
+
+  res.json({
+    msg: "TODO DELETE Route",
+    resp: ans,
+  });
+});
+
 module.exports = todoRoute;
