@@ -1,26 +1,26 @@
-const models = require('../models/models')
+const models = require('../models/models');
 
-async function getUsers () {
+async function getUsers() {
   try {
-    return await models.user.find({})
+    return await models.User.find({});
   } catch (err) {
-    return err.message
+    return err.message;
   }
 }
 
-async function addUser (name, email) {
+async function addUser(name, email) {
   try {
-    const newUser = new models.user({
+    const newUser = new models.User({
       name,
-      email
-    })
-    return await newUser.save()
+      email,
+    });
+    return await newUser.save();
   } catch (err) {
-    return err.message
+    return err.message;
   }
 }
 
 module.exports = {
   getUsers,
-  addUser
-}
+  addUser,
+};
