@@ -1,26 +1,26 @@
-const models = require("../models/models");
+const models = require('../models/models')
 
-async function getTodos() {
+async function getTodos () {
   try {
-    return await models.todo.find({});
+    return await models.todo.find({})
   } catch (err) {
-    return err.message;
+    return err.message
   }
 }
 
-async function addTodo(name) {
+async function addTodo (name) {
   try {
     const newTodo = new models.todo({
-      name: name,
-      deleted: false,
-    });
-    return await newTodo.save();
+      name,
+      deleted: false
+    })
+    return await newTodo.save()
   } catch (err) {
-    return err.message;
+    return err.message
   }
 }
 
 module.exports = {
-  getTodos: getTodos,
-  addTodo: addTodo,
-};
+  getTodos,
+  addTodo
+}
