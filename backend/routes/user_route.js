@@ -8,12 +8,9 @@ userRoute.get('/', async (req, res) => {
 });
 
 userRoute.post('/', async (req, res) => {
-  const { name } = req.body;
-  const { email } = req.body;
-
   res.json({
     msg: 'User POST Route',
-    data: await controller.user.addUser(name, email),
+    data: await controller.user.addUser(req.body.name, req.body.email),
   });
 });
 

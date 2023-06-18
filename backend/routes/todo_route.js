@@ -11,11 +11,9 @@ todoRoute.get('/', async (req, res) => {
 });
 
 todoRoute.post('/', async (req, res) => {
-  const { name } = req.body;
-  console.log('Name: ', name);
   res.json({
     msg: 'TODO POST Route',
-    resp: await todoController.todo.addTodo(name),
+    resp: await todoController.todo.addTodo(req.body.name),
   });
 });
 
