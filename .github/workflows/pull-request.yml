@@ -25,7 +25,7 @@ jobs:
         
       - name: Details
         run: |
-          echo "Sender: ${{ github.event.pull_request.sender.login }}"
+          echo "Sender: ${{ github.event.pull_request.user.login }}"
           echo "PR Number: ${{ github.event.number }}"
           
       - name: Update Assignee
