@@ -1,0 +1,12 @@
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Test Job
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: details
+        run: echo "${{ github }}"
