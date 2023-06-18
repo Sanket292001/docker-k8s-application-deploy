@@ -25,4 +25,8 @@ jobs:
         
       - name: Details
         run: |
-          echo "${{ toJson(github.event.pull_request) }}"
+          echo "Sender: ${{ github.event.pull_request.sender.login }}"
+          echo "PR Number: ${{ github.event.number }}
+          
+      - name: Update Assignee
+        run: gh --version
