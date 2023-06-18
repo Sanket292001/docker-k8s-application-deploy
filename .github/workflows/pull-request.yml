@@ -25,4 +25,4 @@ jobs:
         
       - name: Details
         run: |
-          echo "${{ github.event.pull_request }}"
+          echo "${{ toJson(github.event.pull_request) }}"
