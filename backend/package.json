@@ -6,7 +6,9 @@
   "scripts": {
     "start": "export NODE_ENV=production && node index.js",
     "dev": "export NODE_ENV=development && nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint:check": "eslint \"**/*.js\"",
+    "eslint:fix": "eslint --fix \"**/*.js\""
   },
   "keywords": [],
   "author": "",
@@ -17,5 +19,10 @@
     "express": "^4.18.2",
     "mongoose": "^7.3.0",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-standard": "^17.1.0"
   }
 }

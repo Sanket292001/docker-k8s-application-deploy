@@ -1,11 +1,11 @@
-const user_route = require("./user_route");
-const todo_route = require("./todo_route");
+const userRoute = require('./user_route');
+const todoRoute = require('./todo_route');
 
 function setRoutes(app) {
-  app.use("/user", user_route);
-  app.use("/todo", todo_route);
+  app.use('/user', userRoute);
+  app.use('/todo', todoRoute);
 }
 
 module.exports = {
-  setRoutes: setRoutes,
+  setRoutes,
 };

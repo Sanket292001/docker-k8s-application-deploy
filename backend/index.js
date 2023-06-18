@@ -1,12 +1,12 @@
-const config = require("./config/config");
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const config = require('./config/config');
+const { setRoutes } = require('./routes/routes');
 
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const { setRoutes } = require("./routes/routes");
 const app = express();
 
-console.log("Environment: ", config.NODE_ENV);
+console.log('Environment: ', config.NODE_ENV);
 
 // Middlewares
 app.use(express.json());
@@ -15,17 +15,16 @@ app.use(cors());
 // Routes
 setRoutes(app);
 
-app.get("/", (req, res) => {
-  res.json({ msg: "Entrypoint" });
+app.get('/', (req, res) => {
+  res.json({ msg: 'Entrypoint' });
 });
-
-main().catch((err) => console.log(err));
 
 async function main() {
   await mongoose.connect(
-    `mongodb://${config.MONGODB_URL}/${config.DATABASE_NAME}`
+    `mongodb://${config.MONGODB_URL}/${config.DATABASE_NAME}`,
   );
 }
+main().catch((err) => console.log(err));
 
 // Listen
 app.listen(config.PORT, () => {
