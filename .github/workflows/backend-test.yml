@@ -11,12 +11,12 @@ on:
 
 jobs:
   test:
-
+    name: test backend app
     runs-on: ubuntu-latest
     
     defaults:
       run:
-        working-directory: backend
+        working-directory: ./backend
     
     strategy:
       matrix:
@@ -30,6 +30,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: ./backend
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
