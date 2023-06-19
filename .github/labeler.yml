@@ -14,5 +14,9 @@ frontend:
 test:
 - '**/*.test.js'
 
+github-conf:
+- '.github/**'
+
 workflow:
 - '.github/workflows/**'
+
