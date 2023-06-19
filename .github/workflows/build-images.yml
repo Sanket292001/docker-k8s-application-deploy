@@ -12,9 +12,9 @@ env:
   
 jobs:          
   build:
+    if: ${{ github.event_name == "push" }}
     name: Build Docker Images
     runs-on: ubuntu-latest
-    if: github.event_name == "push"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3.5.3
