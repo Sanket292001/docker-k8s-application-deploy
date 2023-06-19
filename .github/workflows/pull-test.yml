@@ -1,6 +1,6 @@
 name: Pull Test
 
-on: ["push"]
+on: ["push", "pull_request"]
 
 
 jobs:
@@ -11,5 +11,6 @@ jobs:
     steps:
       - name: Display
         run: |
+          echo "${{ github.sha }}"
           echo "${{ toJson(github) }}"
-          echo ${{ GITHUB_SHA }}
+          
