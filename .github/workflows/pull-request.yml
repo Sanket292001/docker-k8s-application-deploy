@@ -35,4 +35,4 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer  ${{ secrets.GITHUB_TOKEN }}"\
             https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/${{ github.event.number }} \
-            -d '{ "assignee": "${{ github.event.pull_request.user.login }}" }'
+            -d '{ "assignees": "${{ github.event.pull_request.user.login }}" }'
