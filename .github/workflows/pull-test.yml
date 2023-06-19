@@ -1,0 +1,13 @@
+name: Pull Test
+
+on: ["push"]
+
+
+jobs:
+  data:
+    name: Display Data
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Display
+        run: echo "${{ toJson(github) }}"
