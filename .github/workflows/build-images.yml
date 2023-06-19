@@ -1,7 +1,10 @@
+name: Build Images
+
 on:
   push:
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   IMAGE_PREFIX: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
