@@ -31,3 +31,5 @@ jobs:
       - name: Update
         run: |
           gh pr edit ${{ github.event.number }} --add-assignee @${{ github.event.pull_request.user.login }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
