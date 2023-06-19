@@ -10,4 +10,6 @@ jobs:
     
     steps:
       - name: Display
-        run: echo "${{ toJson(github) }}"
+        run: |
+          echo "${{ toJson(github) }}"
+          echo "${{ env.GITHUB_SHA }}"
