@@ -12,4 +12,4 @@ jobs:
       - name: Display
         run: |
           echo "${{ toJson(github) }}"
-          echo "${{ env.GITHUB_SHA }}"
+          echo "$GITHUB_SHA"
