@@ -1,11 +1,13 @@
 on:
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  pull-requests: write
-  
+  pull_request_target:
+    types: [opened, ready_for_review]
+    
 jobs:
+  add-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kentaro-m/auto-assign-action@v1.2.5
+      
   test:
     name: Test Job
     runs-on: ubuntu-latest
