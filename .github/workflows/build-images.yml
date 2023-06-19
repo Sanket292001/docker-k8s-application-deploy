@@ -6,17 +6,20 @@ on:
   pull_request:
     branches: ["main"]
     
-# env:
-#   IMAGE_PREFIX: "${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}"
-#   IMAGE_SUFFIX: "${{ github.event_name }}-${{ env.GITHUB_SHA }}"
+env:
+  IMAGE_PREFIX: "${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}"
+
 
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    
+    env:
+      IMAGE_SUFFIX: "${{ github.event_name }}-${{ env.GITHUB_SHA }}"
     steps:
-      - run: echo "Hello"
+      - run: |
+          echo "${{ env.IMAGE_SUFFIX }}"
+          echo "${{ env.IMAGE_PREFIX }}"
 # jobs:          
 #   build:
 #     name: Build Docker Images
