@@ -18,6 +18,7 @@ jobs:
       - run: |
           echo "${{ env.IMAGE_PREFIX }}"
           echo "${{ env.GITHUB_SHA }}"
+          echo ${{ github.event_name }}"
 # jobs:          
 #   build:
 #     name: Build Docker Images
