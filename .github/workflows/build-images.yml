@@ -17,3 +17,6 @@ jobs:
         
       - name: Build
         run: echo "Build"
+        
+      - name: Docker Compose
+        run: docker compose --version
