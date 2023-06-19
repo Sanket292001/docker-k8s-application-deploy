@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+    inputs: 
+      build_number:
+        description: 'Build Number for Image'
+        required: true
+        type: string
+        
+jobs:
+  build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3.5.3
+        
+      - name: Build
+        run: echo "Build"
