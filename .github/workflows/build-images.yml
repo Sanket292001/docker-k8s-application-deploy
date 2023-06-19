@@ -16,12 +16,12 @@ jobs:
     
     steps:
       - name: Set Prefix for pull_request event
-        if: github.event_name === "pull_request"
+        if: github.event_name == "pull_request"
         env:
           IMAGE_TAG_SUFFIX: ${{ github.event.number }}
           
       - name: Set Prefix for push event
-        if: github.event_name === "push"
+        if: github.event_name == "push"
         env:
           IMAGE_TAG_SUFFIX: ${{ env.GITHUB_SHA }}
           
