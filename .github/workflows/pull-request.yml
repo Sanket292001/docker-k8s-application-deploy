@@ -3,31 +3,21 @@ on:
     branches: [ "main" ]
     
 jobs:
-  test:
-    name: Test Job
+  labeller:
+    name: Labeller Job
     runs-on: ubuntu-latest
     
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-        
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-        
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-        
-      - name: Details
-        run: |
-          echo "Sender: ${{ github.event.pull_request.user.login }}"
-          echo "PR Number: ${{ github.event.number }}"
-      
+      - name: Labeler
+        uses: actions/labeler@v4.1.0
+        with:
+          dot: true
+          
+  assignee:
+    name: Assignee Job
+    runs-on: ubuntu-latest
+    
+    steps:
       - name: Update
         run: |
           curl -s -L \
