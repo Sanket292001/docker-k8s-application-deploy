@@ -7,7 +7,8 @@ on:
 
 env:
   IMAGE_PREFIX: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
-  IMAGE_TAG_SUFFIX: "${{ github.event_name }} === 'pull_request' ? '${{ github.event.number }}' : '${{ env.GITHUB_SHA }}'"
+  IMAGE_TAG_SUFFIX: "${{ github.event_name }}-${{ env.GITHUB_SHA }}"
+#   IMAGE_TAG_SUFFIX: "${{ github.event_name }} === 'pull_request' ? '${{ github.event.number }}' : '${{ env.GITHUB_SHA }}'"
   
 jobs:
   build:
