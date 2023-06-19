@@ -1,13 +1,6 @@
 on:
   pull_request:
     branches: [ "main" ]
-    
-  workflow_dispatch:
-    inputs: 
-      build_number:
-        description: 'Build Number for Image'
-        required: true
-        type: string
 
 env:
   IMAGE_PREFIX: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
