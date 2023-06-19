@@ -8,27 +8,12 @@ on:
     
 env:
   IMAGE_PREFIX: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
+  IMAGE_TAG_SUFFIX: "1"
   
-jobs:
-  setup-env:
-    name: Setup Environments
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Set Prefix for pull_request event
-        if: github.event_name == "pull_request"
-        env:
-          IMAGE_TAG_SUFFIX: ${{ github.event.number }}
-          
-      - name: Set Prefix for push event
-        if: github.event_name == "push"
-        env:
-          IMAGE_TAG_SUFFIX: ${{ env.GITHUB_SHA }}
-          
+jobs:          
   build:
     name: Build Docker Images
     runs-on: ubuntu-latest
-    needs: [setup-env]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3.5.3
@@ -42,7 +27,7 @@ jobs:
           docker push ${{ env.IMAGE_NAME }}
         working-directory: backend
         env:
-          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-backend:0.0.1-${{ github.setup-env.steps.env.IMAGE_TAG_SUFFIX }}
+          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-backend:0.0.1-${{ env.IMAGE_TAG_SUFFIX }}
               
       - name: Build Frontend
         run: |
@@ -50,4 +35,4 @@ jobs:
           docker push ${{ env.IMAGE_NAME }}
         working-directory: frontend
         env:
-          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-frontend:0.0.1-${{ github.setup-env.steps.env.IMAGE_TAG_SUFFIX }}
+          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-frontend:0.0.1-${{ env.IMAGE_TAG_SUFFIX }}
