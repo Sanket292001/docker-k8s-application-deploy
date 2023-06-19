@@ -1,9 +1,12 @@
 on:
   pull_request:
     branches: [ "main" ]
+  push:
+    branches: [ "main" ]
 
 env:
   IMAGE_PREFIX: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
+  IMAGE_TAG_SUFFIX: "${{ github.event_name }} === 'pull_request' ? '${{ github.event.number }}' : '${{ env.GITHUB_SHA }}'"
   
 jobs:
   build:
@@ -23,7 +26,7 @@ jobs:
           docker push ${{ env.IMAGE_NAME }}
         working-directory: backend
         env:
-          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-backend:0.0.1-${{ github.event.number }}
+          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-backend:0.0.1-${{ env.IMAGE_TAG_SUFFIX }}
               
       - name: Build Frontend
         run: |
@@ -31,4 +34,4 @@ jobs:
           docker push ${{ env.IMAGE_NAME }}
         working-directory: frontend
         env:
-          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-frontend:0.0.1-${{ github.event.number }}
+          IMAGE_NAME: ${{ env.IMAGE_PREFIX }}-frontend:0.0.1-${{ env.IMAGE_TAG_SUFFIX }}
