@@ -9,7 +9,6 @@ on:
 env:
   IMAGE_PREFIX: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
   
-  
 jobs:
   setup-env:
     name: Setup Environments
