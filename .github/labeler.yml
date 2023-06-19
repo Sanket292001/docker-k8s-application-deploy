@@ -15,7 +15,7 @@ test:
 - '**/*.test.js'
 
 github-conf:
-- '.github/**'
+- all: [ '.github/**', '!.github/workflows/**' ]
 
 workflow:
 - '.github/workflows/**'
