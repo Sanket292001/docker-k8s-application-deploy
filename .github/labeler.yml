@@ -1,0 +1,22 @@
+# Add 'repo' label to any root file changes
+repo:
+- '*'
+
+# Add 'backend' label to any change to backend directory
+backend:
+- 'backend/**'
+
+# Add 'frontend` label to any change to frontend directory
+frontend:
+- 'frontend/**'
+
+# Add 'test' label to any change to *.spec.js files within the source dir
+test:
+- '**/*.test.js'
+
+github-conf:
+- '.github/**'
+
+workflow:
+- '.github/workflows/**'
+
