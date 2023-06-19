@@ -34,5 +34,5 @@ jobs:
             -X PATCH \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer  ${{ secrets.GITHUB_TOKEN }}"\
-            https://api.github.com/repos/OWNER/REPO/pulls/${{ github.event.number }} \
+            https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/${{ github.event.number }} \
             -d '{ "assignee": "${{ github.event.pull_request.user.login }}" }'
